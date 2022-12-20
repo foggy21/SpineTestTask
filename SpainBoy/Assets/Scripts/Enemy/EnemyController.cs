@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, _speed * Time.deltaTime);
     }
 
+    // When player will slide, cube change color.
     private void ChangeColor()
     {
         material.color = Color.green;

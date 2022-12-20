@@ -8,7 +8,6 @@ public class CameraController : MonoBehaviour
     private PlayerController player;
     private float dumping = 1.5f;
 
-    // Update is called once per frame
     void Update()
     {
         if (player)

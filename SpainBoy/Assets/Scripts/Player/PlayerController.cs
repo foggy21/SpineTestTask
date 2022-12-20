@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    private float raycastDistance = 1.5f;
+    private float raycastDistance = 2f;
     private float _speed = 5f;
     private float _slideSpeed = 3f;
     private bool moveController = true;
@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
         skeletonAnimation= GetComponent<SkeletonAnimation>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(skeletonAnimation.AnimationState);
         Move();
         Slide();
     }
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         if (moveController && Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, rb.velocity.y);
-            skeletonAnimation.AnimationName = "walk";
+            skeletonAnimation.AnimationName = "run";
         }
         else
         {
@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
         if (hit)
         {
             moveController = false;
-            rb.AddForce(new Vector2(_slideSpeed, _slideSpeed), ForceMode.Force);
-            skeletonAnimation.AnimationName = "idle";
+            rb.AddForce(new Vector2(_slideSpeed, _slideSpeed), ForceMode.Force); // Slide physics.
+            skeletonAnimation.AnimationName = "run-to-idle";
             onPlayerSliding.Invoke();
         }
         else
