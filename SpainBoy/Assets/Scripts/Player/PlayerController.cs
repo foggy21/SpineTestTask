@@ -2,6 +2,7 @@ using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class PlayerController : MonoBehaviour
     private bool moveController = true;
 
     private SkeletonAnimation skeletonAnimation;
-    private Rigidbody2D rb2D;
+    private Rigidbody rb;
+
+    public UnityAction onPlayerSliding;
+
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         skeletonAnimation= GetComponent<SkeletonAnimation>();
     }
 
@@ -28,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         if (moveController && Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
-            rb2D.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, rb2D.velocity.y);
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, rb.velocity.y);
             skeletonAnimation.AnimationName = "walk";
         }
         else
@@ -39,13 +43,14 @@ public class PlayerController : MonoBehaviour
 
     private void Slide()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, LayerMask.GetMask("InclinedPlane"));
+        bool hit = Physics.Raycast(transform.position, Vector2.down, raycastDistance, LayerMask.GetMask("InclinedPlane"));
 
-        if (hit.collider != null)
+        if (hit)
         {
             moveController = false;
-            rb2D.AddForce(new Vector2(_slideSpeed, _slideSpeed), ForceMode2D.Force);
+            rb.AddForce(new Vector2(_slideSpeed, _slideSpeed), ForceMode.Force);
             skeletonAnimation.AnimationName = "idle";
+            onPlayerSliding.Invoke();
         }
         else
         {
