@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float raycastDistance = 4f;
+    private float raycastDistance = 1.5f;
     private float _speed = 5f;
-    private float _slideSpeed = 2f;
-    private SkeletonAnimation skeletonAnimation;
+    private float _slideSpeed = 3f;
     private bool moveController = true;
 
+    private SkeletonAnimation skeletonAnimation;
     private Rigidbody2D rb2D;
     void Start()
     {
@@ -39,8 +39,6 @@ public class PlayerController : MonoBehaviour
 
     private void Slide()
     {
-        Physics2D.queriesStartInColliders = false;
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, LayerMask.GetMask("InclinedPlane"));
 
         if (hit.collider != null)

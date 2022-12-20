@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7081312079992396332}
   - component: {fileID: 4528317452458077965}
   - component: {fileID: 6017020713671053395}
-  - component: {fileID: 1019550186644337626}
-  - component: {fileID: 8827527012825647072}
   - component: {fileID: 7647725078127654729}
+  - component: {fileID: 2251162680773362444}
+  - component: {fileID: 9155809078004259020}
   m_Layer: 0
   m_Name: Spine GameObject (spineboy-pro)
   m_TagString: Untagged
@@ -123,7 +123,19 @@ MonoBehaviour:
   _animationName: 
   loop: 1
   timeScale: 1
---- !u!61 &1019550186644337626
+--- !u!114 &7647725078127654729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339678860299012117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2219c1eec84f8b047b4fb8e0e29e3ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &2251162680773362444
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +161,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5185666, y: 4.116486}
   m_EdgeRadius: 0
---- !u!50 &8827527012825647072
+--- !u!50 &9155809078004259020
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -170,15 +182,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7647725078127654729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1339678860299012117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2219c1eec84f8b047b4fb8e0e29e3ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
